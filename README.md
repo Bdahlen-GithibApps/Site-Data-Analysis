@@ -21,7 +21,7 @@ python -m venv .venv
 # Windows: .venv\Scripts\activate
 # macOS/Linux: source .venv/bin/activate
 pip install -r requirements.txt
-python app.py
+python site_data_app_nice_gui.py
 ```
 
 Open the URL printed in the terminal.
@@ -34,7 +34,7 @@ Open the URL printed in the terminal.
 ## Deploy to Render (simple)
 - Create a new **Python Web Service**
 - Build command: `pip install -r requirements.txt`
-- Start command: `python app.py`
+- Start command: `python site_data_app_nice_gui.py`
 - Set env vars:
   - `ENV=prod`
   - `NICEGUI_SECRET_KEY=<random>`
