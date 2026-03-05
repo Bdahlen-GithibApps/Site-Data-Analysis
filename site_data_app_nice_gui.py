@@ -183,20 +183,27 @@ def main() -> None:
         with ui.element("table").classes("sir-table q-mt-sm"):
             with ui.element("thead"):
                 with ui.element("tr"):
-                    ui.element("th").text("SIR Section / Field")
-                    ui.element("th").text("SIR Table Value (Prefilled)")
-                    ui.element("th").text("Lookup Result")
+                    with ui.element("th"):
+                        ui.label("SIR Section / Field")
+                    with ui.element("th"):
+                        ui.label("SIR Table Value (Prefilled)")
+                    with ui.element("th"):
+                        ui.label("Lookup Result")
             with ui.element("tbody"):
                 for sec in sir["sections"]:
                     with ui.element("tr"):
-                        ui.element("td").classes("sir-section").props("colspan=3").text(sec["title"])
+                        with ui.element("td").classes("sir-section").props("colspan=3"):
+                            ui.label(sec["title"])
                     for fk, label in sec["rows"]:
                         left = sir_prefill_value(sec["id"], fk, label)
                         right = str(state["dd"]["sir"][sec["id"]][fk].get("value", "") or "")
                         with ui.element("tr"):
-                            ui.element("td").text(label)
-                            ui.element("td").text(left)
-                            ui.element("td").text(right if right.strip() else "-")
+                            with ui.element("td"):
+                                ui.label(label)
+                            with ui.element("td"):
+                                ui.label(left)
+                            with ui.element("td"):
+                                ui.label(right if right.strip() else "-")
 
     ui.label("Site Data Due Diligence").classes("text-h4")
     with ui.tabs() as tabs:
